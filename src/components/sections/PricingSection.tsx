@@ -59,7 +59,7 @@ function CreditCounter() {
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
-      <span className="text-xs font-sans font-medium tracking-[0.15em] uppercase text-gray-400 mb-6 block">
+      <span className="text-xs font-sans font-medium tracking-[0.15em] uppercase text-purple-400 mb-6 block">
         Your Dashboard
       </span>
 
@@ -68,7 +68,7 @@ function CreditCounter() {
         <motion.p
           animate={animate ? { scale: [1, 1.1, 1] } : {}}
           transition={{ duration: 0.3 }}
-          className="text-5xl md:text-6xl font-serif italic text-gray-900"
+          className="text-5xl md:text-6xl font-sans font-bold text-gray-900"
         >
           {credits}
         </motion.p>
@@ -77,7 +77,7 @@ function CreditCounter() {
       <div className="space-y-3">
         <button
           onClick={() => deduct(1)}
-          className="w-full py-3 bg-[#00E87A]/10 text-[#00E87A] rounded-xl text-sm font-sans font-semibold hover:bg-[#00E87A]/15 transition-colors border border-[#00E87A]/20"
+          className="w-full py-3 bg-purple-50 text-purple-600 rounded-xl text-sm font-sans font-semibold hover:bg-purple-100 transition-colors border border-purple-200"
         >
           Get Email — 1 credit
         </button>
@@ -100,7 +100,7 @@ function CreditCounter() {
         </div>
         <div className="flex justify-between text-xs font-sans">
           <span className="text-gray-400">Charged</span>
-          <span className="text-[#00E87A]">only on success</span>
+          <span className="text-purple-600">only on success</span>
         </div>
       </div>
     </div>
@@ -109,22 +109,21 @@ function CreditCounter() {
 
 export default function PricingSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" className="relative py-28 md:py-40 bg-white" ref={ref}>
+    <section id="pricing" className="relative py-16 md:py-24 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-12 md:mb-16"
         >
-          <span className="inline-block text-xs font-sans font-medium tracking-[0.2em] uppercase text-gray-400 mb-6">
+          <span className="inline-block text-xs font-sans font-medium tracking-[0.2em] uppercase text-purple-400 mb-4">
             Pricing
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif italic tracking-tight text-gray-900 leading-[1.1] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-sans font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
             Simple, transparent pricing
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-sans font-light max-w-lg mx-auto">
@@ -132,9 +131,7 @@ export default function PricingSection() {
           </p>
         </motion.div>
 
-        {/* Two column */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 items-start">
-          {/* Pricing tiers */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {tiers.map((tier, i) => (
               <motion.div
@@ -144,13 +141,13 @@ export default function PricingSection() {
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
                 className={`relative rounded-2xl p-6 md:p-7 border transition-all duration-500 ${
                   tier.highlighted
-                    ? "bg-white border-[#00E87A]/30 shadow-[0_0_40px_rgba(0,232,122,0.08)]"
+                    ? "bg-white border-purple-300 shadow-[0_0_40px_rgba(124,58,237,0.08)]"
                     : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
                 }`}
               >
                 {tier.highlighted && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="px-3 py-1 bg-[#00E87A] text-gray-900 text-[10px] font-sans font-bold tracking-wider uppercase rounded-full flex items-center gap-1">
+                    <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-violet-500 text-white text-[10px] font-sans font-bold tracking-wider uppercase rounded-full flex items-center gap-1">
                       <Star className="w-3 h-3" /> Most Popular
                     </span>
                   </div>
@@ -164,7 +161,7 @@ export default function PricingSection() {
                 </p>
 
                 <div className="mb-6">
-                  <span className="text-3xl font-serif italic text-gray-900">
+                  <span className="text-3xl font-sans font-bold text-gray-900">
                     {tier.price}
                   </span>
                   <span className="text-sm text-gray-400 font-sans">/mo</span>
@@ -176,7 +173,7 @@ export default function PricingSection() {
                       key={f}
                       className="flex items-center gap-2 text-sm text-gray-500 font-sans font-light"
                     >
-                      <Check className="w-3.5 h-3.5 text-[#00E87A] flex-shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-purple-500 flex-shrink-0" />
                       {f}
                     </li>
                   ))}
@@ -185,7 +182,7 @@ export default function PricingSection() {
                 <button
                   className={`w-full py-3 rounded-xl text-sm font-sans font-semibold transition-all ${
                     tier.highlighted
-                      ? "bg-[#00E87A] text-gray-900 hover:bg-[#00E87A]/90"
+                      ? "bg-gradient-to-r from-purple-600 to-violet-500 text-white hover:opacity-90 shadow-md shadow-purple-500/20"
                       : "bg-gray-50 text-gray-600 border border-gray-200 hover:bg-gray-100"
                   }`}
                 >
@@ -195,7 +192,6 @@ export default function PricingSection() {
             ))}
           </div>
 
-          {/* Credit counter */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

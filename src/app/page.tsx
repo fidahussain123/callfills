@@ -1,11 +1,10 @@
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
-import ProblemSection from "@/components/sections/ProblemSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import TrustedBySection from "@/components/sections/TrustedBySection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
+import ToolsSection from "@/components/sections/ToolsSection";
 import SourcesSection from "@/components/sections/SourcesSection";
-import NotificationSection from "@/components/sections/NotificationSection";
 import PricingSection from "@/components/sections/PricingSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import StatsSection from "@/components/sections/StatsSection";
@@ -18,12 +17,11 @@ export default function Home() {
     <main>
       <Navbar />
       <HeroSection />
-      <ProblemSection />
       <HowItWorksSection />
       <TrustedBySection />
       <FeaturesSection />
+      <ToolsSection />
       <SourcesSection />
-      <NotificationSection />
       <PricingSection />
       <IndustriesSection />
       <StatsSection />

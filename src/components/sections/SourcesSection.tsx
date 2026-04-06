@@ -45,29 +45,24 @@ const sources = [
 
 export default function SourcesSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="sources" className="relative py-28 md:py-40 bg-white" ref={ref}>
+    <section id="sources" className="relative py-16 md:py-24 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-12 md:mb-16"
         >
-          <span className="inline-block text-xs font-sans font-medium tracking-[0.2em] uppercase text-gray-400 mb-6">
-            Data Sources
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif italic tracking-tight text-gray-900 leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-sans font-bold tracking-tight text-gray-900 leading-[1.1]">
             We watch everywhere.
             <br />
-            <span className="text-gray-300">24 hours. 7 days.</span>
+            <span className="text-gray-400">24 hours. 7 days.</span>
           </h2>
         </motion.div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {sources.map((source, i) => {
             const Icon = source.icon;
@@ -77,14 +72,13 @@ export default function SourcesSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-                className="group relative bg-white border border-gray-200 rounded-2xl p-7 md:p-8 hover:border-[#00E87A]/30 transition-all duration-500 cursor-default shadow-sm"
+                className="group relative bg-white border border-gray-200 rounded-2xl p-7 md:p-8 hover:border-purple-300 transition-all duration-500 cursor-default shadow-sm"
               >
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-[#00E87A]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-purple-50/0 group-hover:bg-purple-50/50 transition-colors duration-500" />
 
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mb-5 group-hover:border-[#00E87A]/30 transition-colors duration-500">
-                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-[#00E87A] transition-colors duration-500" />
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mb-5 group-hover:border-purple-300 group-hover:bg-purple-50 transition-colors duration-500">
+                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-purple-500 transition-colors duration-500" />
                   </div>
                   <h3 className="text-lg font-sans font-semibold text-gray-900 mb-3">
                     {source.name}

@@ -1,7 +1,9 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRef } from "react";
+import { SparklesText } from "@/components/ui/sparkles-text";
 
 function ElegantShape({
   className,
@@ -9,7 +11,7 @@ function ElegantShape({
   width = 400,
   height = 100,
   rotate = 0,
-  gradient = "from-gray-200/60",
+  gradient = "from-purple-300/40",
 }: {
   className?: string;
   delay?: number;
@@ -41,10 +43,10 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[2px] border-2 border-gray-200/50",
-            "shadow-[0_8px_32px_0_rgba(0,0,0,0.03)]",
+            "backdrop-blur-[2px] border-2 border-purple-500/60",
+            "shadow-[0_8px_40px_0_rgba(124,58,237,0.22)]",
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.03),transparent_70%)]"
+            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.06),transparent_70%)]"
           )}
         />
       </motion.div>
@@ -65,6 +67,15 @@ export default function HeroGeometric({
   subtitle?: string;
   children?: React.ReactNode;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -160]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -220]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y5 = useTransform(scrollYProgress, [0, 1], [0, -140]);
+
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -79,50 +90,26 @@ export default function HeroGeometric({
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#00E87A]/[0.04] via-transparent to-[#00E87A]/[0.04] blur-3xl" />
+    <div ref={containerRef} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-transparent to-violet-400/20 blur-3xl" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(124,58,237,0.06),transparent_60%)]" />
 
       <div className="absolute inset-0 overflow-hidden">
-        <ElegantShape
-          delay={0.3}
-          width={600}
-          height={140}
-          rotate={12}
-          gradient="from-[#00E87A]/[0.1]"
-          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
-        />
-        <ElegantShape
-          delay={0.5}
-          width={500}
-          height={120}
-          rotate={-15}
-          gradient="from-[#00E87A]/[0.08]"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
-        />
-        <ElegantShape
-          delay={0.4}
-          width={300}
-          height={80}
-          rotate={-8}
-          gradient="from-gray-200/60"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
-        />
-        <ElegantShape
-          delay={0.6}
-          width={200}
-          height={60}
-          rotate={20}
-          gradient="from-[#00E87A]/[0.08]"
-          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
-        />
-        <ElegantShape
-          delay={0.7}
-          width={150}
-          height={40}
-          rotate={-25}
-          gradient="from-gray-200/40"
-          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
-        />
+        <motion.div style={{ y: y1 }} className="absolute left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]">
+          <ElegantShape delay={0.3} width={600} height={140} rotate={12} gradient="from-purple-600/60" />
+        </motion.div>
+        <motion.div style={{ y: y2 }} className="absolute right-[-5%] md:right-[0%] top-[70%] md:top-[75%]">
+          <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-violet-600/50" />
+        </motion.div>
+        <motion.div style={{ y: y3 }} className="absolute left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]">
+          <ElegantShape delay={0.4} width={300} height={80} rotate={-8} gradient="from-purple-500/55" />
+        </motion.div>
+        <motion.div style={{ y: y4 }} className="absolute right-[15%] md:right-[20%] top-[10%] md:top-[15%]">
+          <ElegantShape delay={0.6} width={200} height={60} rotate={20} gradient="from-violet-500/50" />
+        </motion.div>
+        <motion.div style={{ y: y5 }} className="absolute left-[20%] md:left-[25%] top-[5%] md:top-[10%]">
+          <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-purple-500/50" />
+        </motion.div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
@@ -132,10 +119,10 @@ export default function HeroGeometric({
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 border border-gray-200 mb-8 md:mb-12"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 mb-8 md:mb-12"
           >
-            <Circle className="h-2 w-2 fill-[#00E87A] text-[#00E87A]" />
-            <span className="text-sm text-gray-500 tracking-wide font-sans">
+            <Circle className="h-2 w-2 fill-purple-500 text-purple-500" />
+            <span className="text-sm text-purple-600 tracking-wide font-sans font-semibold">
               {badge}
             </span>
           </motion.div>
@@ -145,16 +132,19 @@ export default function HeroGeometric({
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
+            className="mb-6 md:mb-8"
           >
-            <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold mb-6 md:mb-8 tracking-tight font-serif italic">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-500">
+            <h1 className="text-[2rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[7rem] font-black tracking-tight font-sans leading-[1.04]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-950 to-gray-600">
                 {title1}
               </span>
-              <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00E87A] via-gray-700 to-[#00E87A]/70">
-                {title2}
-              </span>
             </h1>
+            <SparklesText
+              text={title2}
+              className="text-[2rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[7rem] font-black tracking-tight font-sans leading-[1.04] text-purple-600"
+              colors={{ first: "#7C3AED", second: "#A855F7" }}
+              sparklesCount={8}
+            />
           </motion.div>
 
           <motion.div
@@ -164,7 +154,7 @@ export default function HeroGeometric({
             animate="visible"
           >
             {subtitle && (
-              <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 leading-relaxed font-light tracking-wide max-w-2xl mx-auto font-sans">
+              <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-10 leading-relaxed font-medium tracking-wide max-w-2xl mx-auto font-sans">
                 {subtitle}
               </p>
             )}

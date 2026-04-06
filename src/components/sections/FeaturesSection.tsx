@@ -11,7 +11,7 @@ import {
 
 export default function FeaturesSection() {
   return (
-    <section className="px-4 py-16 md:py-32 bg-white">
+    <section className="px-4 py-12 md:py-20 bg-white">
       <div className="mx-auto grid max-w-5xl border border-gray-200 md:grid-cols-2">
         <div>
           <div className="p-6 sm:p-12">
@@ -28,7 +28,7 @@ export default function FeaturesSection() {
           <div aria-hidden className="relative">
             <div className="absolute inset-0 z-10 m-auto size-fit">
               <div className="rounded-lg bg-white z-[1] relative flex size-fit w-fit items-center gap-2 border border-gray-200 px-3 py-1 text-xs font-medium shadow-md shadow-black/5">
-                <span className="text-lg">📍</span> Lead detected in Houston,
+                <MapIcon className="size-4 text-purple-600 inline-block" /> Lead detected in Houston,
                 TX
               </div>
               <div className="rounded-lg bg-gray-50 absolute inset-2 -bottom-2 mx-auto border border-gray-200 px-3 py-4 text-xs font-medium shadow-md shadow-black/5" />
@@ -55,7 +55,7 @@ export default function FeaturesSection() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="flex justify-center items-center size-5 rounded-full border border-gray-300">
-                  <span className="size-3 rounded-full bg-[#00E87A]" />
+                  <span className="size-3 rounded-full bg-purple-500" />
                 </span>
                 <span className="text-gray-500 text-xs">Sat 22 Feb</span>
               </div>
@@ -65,7 +65,7 @@ export default function FeaturesSection() {
             </div>
 
             <div>
-              <div className="rounded-lg mb-1 ml-auto w-3/5 bg-[#00E87A] p-3 text-xs text-gray-900 font-medium">
+              <div className="rounded-lg mb-1 ml-auto w-3/5 bg-gradient-to-r from-purple-600 to-violet-500 p-3 text-xs text-white font-medium">
                 No worries! I&apos;ve configured your WhatsApp alerts for
                 Houston TX leads. You&apos;ll receive them within 60 seconds of
                 detection.
@@ -135,11 +135,11 @@ const Map = () => {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#00E87A",
+    color: "#7C3AED",
   },
   mobile: {
     label: "Mobile",
-    color: "#60a5fa",
+    color: "#A855F7",
   },
 } satisfies ChartConfig;
 

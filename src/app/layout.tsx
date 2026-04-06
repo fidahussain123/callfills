@@ -9,9 +9,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "LeadPilot — AI Lead Generation Engine | Find Every Lead, Close Every Deal",
+  title: "Callfills — AI Lead Generation Engine | Find Every Lead, Close Every Deal",
   description:
-    "LeadPilot watches Facebook, Reddit, Craigslist & Twitter 24/7 for people who need your service. Get verified leads on WhatsApp in under 60 seconds.",
+    "Callfills watches Facebook, Reddit, Craigslist & Twitter 24/7 for people who need your service. Get verified leads on WhatsApp in under 60 seconds.",
   keywords: [
     "AI lead generation",
     "lead generation SaaS",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "contractor leads",
   ],
   openGraph: {
-    title: "LeadPilot — Find Every Lead. Close Every Deal.",
+    title: "Callfills — Find Every Lead. Close Every Deal.",
     description:
       "AI watches 30+ sources 24/7 and sends you verified leads in under 60 seconds.",
     type: "website",

@@ -31,7 +31,7 @@ function Counter({ target, suffix, prefix = "", label, inView, delay = 0 }: Coun
 
   return (
     <div className="text-center">
-      <p className="text-5xl sm:text-6xl md:text-8xl font-serif italic text-gray-900 mb-3">
+      <p className="text-5xl sm:text-6xl md:text-8xl font-sans font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-500 mb-3">
         {prefix}
         {displayValue}
         {suffix}
@@ -52,11 +52,10 @@ const stats = [
 
 export default function StatsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-28 md:py-40 bg-white" ref={ref}>
-      {/* Subtle top/bottom borders */}
+    <section className="relative py-16 md:py-24 bg-white" ref={ref}>
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
@@ -65,12 +64,12 @@ export default function StatsSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-12 md:mb-16"
         >
-          <span className="inline-block text-xs font-sans font-medium tracking-[0.2em] uppercase text-gray-400 mb-6">
+          <span className="inline-block text-xs font-sans font-medium tracking-[0.2em] uppercase text-purple-400 mb-4">
             The Numbers
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif italic tracking-tight text-gray-900 leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-gray-900 leading-[1.1]">
             Results that speak for themselves
           </h2>
         </motion.div>

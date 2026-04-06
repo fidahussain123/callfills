@@ -24,13 +24,13 @@ export default function HeroSection() {
         <div className="flex gap-4 justify-center flex-wrap">
           <a
             href="#cta"
-            className="px-8 py-4 bg-[#00E87A] text-gray-900 font-semibold rounded-xl hover:bg-[#00E87A]/90 transition-all text-sm tracking-wide font-sans hover:scale-[1.02] active:scale-[0.98]"
+            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-violet-500 text-white font-bold rounded-xl hover:opacity-90 transition-all text-sm tracking-wide font-sans hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-purple-500/25"
           >
             Start Free Trial
           </a>
           <a
             href="#how-it-works"
-            className="px-8 py-4 bg-gray-100 text-gray-600 font-medium rounded-xl border border-gray-200 hover:bg-gray-200 transition-all text-sm font-sans"
+            className="px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-700 font-semibold rounded-xl border border-gray-200 hover:bg-gray-100 transition-all text-sm font-sans hover:scale-[1.02] active:scale-[0.98]"
           >
             See How It Works
           </a>
@@ -38,14 +38,14 @@ export default function HeroSection() {
       </HeroGeometric>
 
       {/* Live Ticker */}
-      <div className="relative bg-white border-t border-b border-gray-100 py-4 overflow-hidden">
+      <div className="relative bg-white border-t border-b border-gray-100 py-3 overflow-hidden">
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
         <div className="ticker-left-fast flex whitespace-nowrap">
           {[...tickerItems, ...tickerItems].map((item, i) => (
             <span
               key={i}
-              className="mx-8 text-sm font-sans font-medium text-[#00E87A]/70 tracking-wide"
+              className="mx-8 text-sm font-sans font-semibold text-purple-400/70 tracking-wide"
             >
               {item}
             </span>

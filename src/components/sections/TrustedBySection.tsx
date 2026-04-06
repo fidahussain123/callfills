@@ -40,24 +40,26 @@ const Raycast = () => (
 );
 
 const logos = [
-  { id: "retool", component: Retool, className: "w-32" },
-  { id: "vercel", component: Vercel, className: "w-32" },
-  { id: "remote", component: Remote, className: "w-32" },
-  { id: "arc", component: Arc, className: "w-32" },
-  { id: "raycast", component: Raycast, className: "w-32" },
+  { id: "retool", component: Retool, className: "w-36 md:w-40" },
+  { id: "vercel", component: Vercel, className: "w-36 md:w-40" },
+  { id: "remote", component: Remote, className: "w-36 md:w-40" },
+  { id: "arc", component: Arc, className: "w-36 md:w-40" },
+  { id: "raycast", component: Raycast, className: "w-36 md:w-40" },
 ];
 
 export default function TrustedBySection() {
   return (
     <section className="relative w-full overflow-hidden bg-white">
-      <div className="mx-auto mt-20 w-full max-w-2xl px-4">
-        <div className="text-center text-3xl">
-          <span className="text-indigo-700">Trusted by experts.</span>
+      <div className="mx-auto mt-16 w-[90%] max-w-6xl px-4">
+        <div className="text-center text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] font-sans">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-500">
+            Trusted by experts.
+          </span>
           <br />
           <span className="text-gray-900">Used by the leaders.</span>
         </div>
 
-        <div className="relative mt-7 h-[100px] w-full">
+        <div className="relative mt-10 h-[100px] w-full">
           <InfiniteSlider
             className="flex h-full w-full items-center"
             duration={30}
@@ -70,25 +72,25 @@ export default function TrustedBySection() {
             ))}
           </InfiniteSlider>
           <ProgressiveBlur
-            className="pointer-events-none absolute top-0 left-0 h-full w-[200px]"
+            className="pointer-events-none absolute top-0 left-0 h-full w-[280px]"
             direction="left"
             blurIntensity={1}
           />
           <ProgressiveBlur
-            className="pointer-events-none absolute top-0 right-0 h-full w-[200px]"
+            className="pointer-events-none absolute top-0 right-0 h-full w-[280px]"
             direction="right"
             blurIntensity={1}
           />
         </div>
       </div>
 
-      <div className="relative -mt-32 h-96 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]">
-        <div className="absolute inset-0 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#8350e8,transparent_70%)] before:opacity-40" />
-        <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-gray-200 bg-white" />
+      <div className="relative -mt-24 h-[28rem] w-full overflow-hidden [mask-image:radial-gradient(60%_55%,white,transparent)]">
+        <div className="absolute inset-0 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#7C3AED,transparent_70%)] before:opacity-40" />
+        <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-purple-200 bg-white" />
         <Sparkles
           density={1200}
           className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
-          color="#000000"
+          color="#7C3AED"
         />
       </div>
     </section>
