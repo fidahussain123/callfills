@@ -280,7 +280,7 @@ export default function PricingSection() {
   const [annual, setAnnual] = useState(false);
 
   return (
-    <section id="pricing" className="relative py-20 md:py-32 bg-white" ref={ref}>
+    <section id="pricing" className="relative py-12 md:py-16 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Header */}

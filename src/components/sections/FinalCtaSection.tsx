@@ -65,7 +65,7 @@ export default function FinalCtaSection() {
     <section
       id="cta"
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-gray-50 py-20 md:py-32"
+      className="relative w-full overflow-hidden bg-gray-50 py-12 md:py-16"
     >
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-transparent to-violet-400/20 blur-3xl" />

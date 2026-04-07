@@ -11,7 +11,7 @@ import {
 
 export default function FeaturesSection() {
   return (
-    <section className="px-4 py-12 md:py-20 bg-white">
+    <section className="px-4 py-8 md:py-12 bg-white">
       <div className="mx-auto grid max-w-5xl border border-gray-200 md:grid-cols-2">
         <div>
           <div className="p-6 sm:p-12">

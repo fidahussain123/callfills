@@ -50,7 +50,7 @@ const logos = [
 export default function TrustedBySection() {
   return (
     <section className="relative w-full overflow-hidden bg-white">
-      <div className="mx-auto mt-16 w-[90%] max-w-6xl px-4">
+      <div className="mx-auto mt-8 w-[90%] max-w-6xl px-4">
         <div className="text-center text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] font-sans">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-500">
             Trusted by experts.

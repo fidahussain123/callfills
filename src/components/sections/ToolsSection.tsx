@@ -8,7 +8,7 @@ export default function ToolsSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-white py-24 md:py-32 overflow-hidden" ref={ref} id="tools">
+    <section className="bg-white py-12 md:py-16 overflow-hidden" ref={ref} id="tools">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Header */}

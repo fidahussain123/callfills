@@ -219,7 +219,7 @@ export default function HowItWorksSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 md:py-32 bg-[#f8f9fa]" ref={ref} id="how-it-works">
+    <section className="py-12 md:py-16 bg-[#f8f9fa]" ref={ref} id="how-it-works">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
 
         {/* Header */}
@@ -227,7 +227,7 @@ export default function HowItWorksSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-8"
         >
           <p className="text-[11px] font-sans font-bold tracking-[0.25em] uppercase text-purple-500 mb-4">
             How It Works

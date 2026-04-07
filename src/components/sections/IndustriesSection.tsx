@@ -50,10 +50,10 @@ export default function IndustriesSection() {
   return (
     <section
       id="industries"
-      className="relative py-16 md:py-24 bg-gray-50 overflow-hidden"
+      className="relative py-10 md:py-14 bg-gray-50 overflow-hidden"
       ref={ref}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 mb-10 md:mb-14">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 mb-6 md:mb-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
