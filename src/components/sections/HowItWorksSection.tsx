@@ -24,45 +24,63 @@ function Logo({ url, fallback, bg, size = 20 }: { url: string | null; fallback: 
   return <img src={url} width={size} height={size} alt={fallback} onError={() => setErr(true)} style={{ width: size, height: size, objectFit: "contain", flexShrink: 0 }} />;
 }
 
-/* ─── Card A: 60-Second Pipeline (now half-width, top-left) ─── */
+/* ─── Card A: 60-Second Pipeline (deep card-in-card style) ─── */
 function PipelineVisual() {
   const steps = [
-    { label: "Post Detected",     sub: "Real-time scan",       color: "#7C3AED", dot: "#A855F7" },
-    { label: "AI Scored",         sub: "Intent: High (94%)",   color: "#8B5CF6", dot: "#C084FC" },
-    { label: "Lead Verified",     sub: "Phone + email verified", color: "#6D28D9", dot: "#A855F7" },
-    { label: "Delivered to You",  sub: "WhatsApp in <60s",     color: "#5B21B6", dot: "#7C3AED" },
+    { label: "Post Detected",     sub: "Real-time scan",           color: "#7C3AED", icon: "PD", status: "Live",     statusColor: "bg-green-50 text-green-600" },
+    { label: "AI Scored",         sub: "Intent: High (94%)",       color: "#8B5CF6", icon: "AI", status: "Scoring",  statusColor: "bg-purple-50 text-purple-600" },
+    { label: "Lead Verified",     sub: "Phone + email verified",   color: "#6D28D9", icon: "LV", status: "Verified", statusColor: "bg-green-50 text-green-600" },
+    { label: "Delivered to You",  sub: "Email + Dashboard",        color: "#5B21B6", icon: "DY", status: "Sent",     statusColor: "bg-blue-50 text-blue-600" },
   ];
   return (
-    <div className="relative h-56 flex flex-col justify-center gap-0 pl-2">
-      {steps.map((s, i) => (
-        <div key={s.label} className="flex items-start gap-3 relative">
-          {/* Vertical line */}
-          {i < steps.length - 1 && (
-            <div className="absolute left-[13px] top-6 w-[2px] h-8 bg-gray-100" />
-          )}
-          {/* Dot */}
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", delay: 0.1 + i * 0.15 }}
-            className="mt-1 w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm"
-            style={{ background: s.color }}
-          >
-            <div className="w-2 h-2 rounded-full bg-white/70" />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -8 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.15 + i * 0.15 }}
-            className="pb-6"
-          >
-            <p className="text-sm font-bold text-gray-900 leading-tight">{s.label}</p>
-            <p className="text-xs text-gray-400 mt-0.5">{s.sub}</p>
-          </motion.div>
+    <div className="relative h-64">
+      {/* Outer depth shadow layer */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200/60 shadow-inner" />
+      {/* Inner card */}
+      <div className="relative bg-white rounded-xl border border-gray-200 shadow-sm mx-2 mt-2 mb-2 h-[calc(100%-16px)] overflow-hidden">
+        {/* Window chrome bar */}
+        <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-gray-100">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+          <span className="ml-auto text-[11px] text-gray-400 font-semibold tracking-wide">Pipeline · Live</span>
         </div>
-      ))}
+        {/* Title inside card */}
+        <div className="px-4 pt-3 pb-1">
+          <p className="text-sm font-bold text-gray-900">Lead processing flow</p>
+          <p className="text-[11px] text-gray-400 mt-0.5">Automated 4-step pipeline</p>
+        </div>
+        {/* Steps list */}
+        <div className="px-4 pb-3 flex flex-col gap-1.5">
+          {steps.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 + i * 0.12 }}
+              className="flex items-center gap-3 bg-gray-50/80 rounded-xl px-3 py-2.5 border border-gray-100 hover:border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              {/* Icon */}
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm"
+                style={{ background: s.color }}
+              >
+                <span className="text-white text-[10px] font-black">{s.icon}</span>
+              </div>
+              {/* Text */}
+              <div className="flex-1 min-w-0">
+                <p className="text-[13px] font-bold text-gray-900 leading-tight">{s.label}</p>
+                <p className="text-[11px] text-gray-400 mt-0.5">{s.sub}</p>
+              </div>
+              {/* Status badge */}
+              <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${s.statusColor} flex-shrink-0`}>
+                {s.status}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -70,12 +88,12 @@ function PipelineVisual() {
 /* ─── Card B: Instant Delivery (half-width, top-right) ─── */
 function DeliveryVisual() {
   const channels = [
-    { label: "WhatsApp",  logo: "https://cdn.simpleicons.org/whatsapp/25D366",  bg: "#25D366" },
-    { label: "Telegram",  logo: "https://cdn.simpleicons.org/telegram/26A5E4",  bg: "#26A5E4" },
-    { label: "Gmail",     logo: "https://cdn.simpleicons.org/gmail/EA4335",      bg: "#EA4335" },
-    { label: "n8n",       logo: "https://cdn.simpleicons.org/n8n/EA4B71",        bg: "#EA4B71" },
-    { label: "Supabase",  logo: "https://cdn.simpleicons.org/supabase/3ECF8E",   bg: "#3ECF8E" },
-    { label: "Twilio",    logo: null,                                            bg: "#F22F46" },
+    { label: "Email",      logo: "https://cdn.simpleicons.org/gmail/EA4335",      bg: "#EA4335" },
+    { label: "Dashboard",  logo: null,                                             bg: "#7C3AED" },
+    { label: "n8n",        logo: "https://cdn.simpleicons.org/n8n/EA4B71",        bg: "#EA4B71" },
+    { label: "Supabase",   logo: "https://cdn.simpleicons.org/supabase/3ECF8E",   bg: "#3ECF8E" },
+    { label: "Webhook",    logo: null,                                             bg: "#1a1a2e" },
+    { label: "API",        logo: null,                                             bg: "#0EA5E9" },
   ];
   return (
     <div className="h-56 flex items-center justify-center">
@@ -234,7 +252,7 @@ export default function HowItWorksSection() {
             <div className="mt-2">
               <h3 className="text-2xl font-black text-gray-900 mb-2 font-sans">The 60-Second Pipeline</h3>
               <p className="text-gray-500 text-base font-sans">
-                Every lead is AI-scored, phone-verified and enriched — then on your phone before your competitor sees the post.
+                Every lead is AI-scored, phone-verified and enriched — then in your inbox before your competitor sees the post.
               </p>
             </div>
           </motion.div>
@@ -246,7 +264,7 @@ export default function HowItWorksSection() {
             <div className="mt-2">
               <h3 className="text-2xl font-black text-gray-900 mb-2 font-sans">Instant Delivery</h3>
               <p className="text-gray-500 text-base font-sans">
-                Verified leads pushed to WhatsApp, Telegram, email or your CRM — all in under 60 seconds.
+                Verified leads delivered to your email, dashboard or via API — all in under 60 seconds.
               </p>
             </div>
           </motion.div>

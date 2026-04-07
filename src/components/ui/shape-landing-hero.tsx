@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { SparklesText } from "@/components/ui/sparkles-text";
 
 function ElegantShape({
@@ -49,6 +49,63 @@ function ElegantShape({
             "after:bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.06),transparent_70%)]"
           )}
         />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ─── Floating tool cards on sides ─── */
+const leftTools = [
+  { label: "Facebook",  logo: "https://cdn.simpleicons.org/facebook/1877F2",       bg: "#1877F2", top: "18%", left: "3%",  rotate: -6,  size: 52 },
+  { label: "Reddit",    logo: "https://cdn.simpleicons.org/reddit/FF4500",         bg: "#FF4500", top: "48%", left: "6%",  rotate: 8,   size: 48 },
+  { label: "Apify",     logo: null,                                                 bg: "#FF9B00", top: "75%", left: "2%",  rotate: -4,  size: 44 },
+  { label: "Google",    logo: "https://cdn.simpleicons.org/googlemaps/4285F4",     bg: "#4285F4", top: "35%", left: "12%", rotate: 12,  size: 40 },
+];
+
+const rightTools = [
+  { label: "Apollo",    logo: "https://cdn.simpleicons.org/apollographql/6C47FF",  bg: "#6C47FF", top: "20%", right: "4%",  rotate: 6,   size: 50 },
+  { label: "n8n",       logo: "https://cdn.simpleicons.org/n8n/EA4B71",           bg: "#EA4B71", top: "50%", right: "7%",  rotate: -8,  size: 44 },
+  { label: "Supabase",  logo: "https://cdn.simpleicons.org/supabase/3ECF8E",      bg: "#3ECF8E", top: "72%", right: "2%",  rotate: 5,   size: 46 },
+  { label: "X",         logo: "https://cdn.simpleicons.org/x/000000",             bg: "#000",    top: "38%", right: "13%", rotate: -10, size: 38 },
+];
+
+function ToolCard({ tool, side, index }: { tool: { label: string; logo: string | null; bg: string; top: string; left?: string; right?: string; rotate: number; size: number }; side: "left" | "right"; index: number }) {
+  const [imgErr, setImgErr] = useState(false);
+  const pos = side === "left"
+    ? { top: tool.top, left: tool.left }
+    : { top: tool.top, right: tool.right };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5, rotate: tool.rotate - 20 }}
+      animate={{ opacity: 1, scale: 1, rotate: tool.rotate }}
+      transition={{ duration: 1.2, delay: 0.8 + index * 0.15, ease: [0.23, 0.86, 0.39, 0.96] }}
+      className="absolute hidden md:flex"
+      style={pos}
+    >
+      <motion.div
+        animate={{ y: [0, -8, 0], rotate: [tool.rotate, tool.rotate + 2, tool.rotate] }}
+        transition={{ duration: 4 + index * 0.5, repeat: Infinity, ease: "easeInOut" }}
+        className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/80 flex items-center justify-center"
+        style={{ width: tool.size, height: tool.size }}
+      >
+        {tool.logo && !imgErr ? (
+          <img
+            src={tool.logo}
+            alt={tool.label}
+            width={tool.size * 0.5}
+            height={tool.size * 0.5}
+            onError={() => setImgErr(true)}
+            style={{ width: tool.size * 0.5, height: tool.size * 0.5, objectFit: "contain" }}
+          />
+        ) : (
+          <div
+            className="rounded-lg flex items-center justify-center text-white font-black"
+            style={{ width: tool.size * 0.55, height: tool.size * 0.55, background: tool.bg, fontSize: tool.size * 0.22 }}
+          >
+            {tool.label.slice(0, 2).toUpperCase()}
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );
@@ -111,6 +168,15 @@ export default function HeroGeometric({
           <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-purple-500/50" />
         </motion.div>
       </div>
+
+      {/* Floating tool cards — left side */}
+      {leftTools.map((tool, i) => (
+        <ToolCard key={tool.label} tool={tool} side="left" index={i} />
+      ))}
+      {/* Floating tool cards — right side */}
+      {rightTools.map((tool, i) => (
+        <ToolCard key={tool.label} tool={tool} side="right" index={i} />
+      ))}
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">

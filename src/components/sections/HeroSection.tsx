@@ -19,7 +19,7 @@ export default function HeroSection() {
         badge="AI Lead Generation Engine"
         title1="Find Every Lead."
         title2="Close Every Deal."
-        subtitle="We watch Facebook, Reddit, Craigslist and Twitter 24/7. The moment someone posts 'need a plumber in Houston' — you get their details on WhatsApp in under 60 seconds."
+        subtitle="We watch Facebook, Reddit, Craigslist and Twitter 24/7. The moment someone posts 'need a plumber in Houston' — you get their verified details in under 60 seconds."
       >
         <div className="flex gap-4 justify-center flex-wrap">
           <a

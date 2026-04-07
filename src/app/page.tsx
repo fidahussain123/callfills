@@ -9,7 +9,7 @@ import PricingSection from "@/components/sections/PricingSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import StatsSection from "@/components/sections/StatsSection";
 import FinalCtaSection from "@/components/sections/FinalCtaSection";
-import Footer from "@/components/sections/Footer";
+
 import WhatsAppFab from "@/components/sections/WhatsAppFab";
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
       <IndustriesSection />
       <StatsSection />
       <FinalCtaSection />
-      <Footer />
+
       <WhatsAppFab />
     </main>
   );
