@@ -147,7 +147,7 @@ export default function HeroGeometric({
   };
 
   return (
-    <div ref={containerRef} className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden bg-white">
+    <div ref={containerRef} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white pt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-transparent to-violet-400/20 blur-3xl" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(124,58,237,0.06),transparent_60%)]" />
 
