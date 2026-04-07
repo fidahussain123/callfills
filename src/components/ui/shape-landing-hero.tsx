@@ -180,18 +180,20 @@ export default function HeroGeometric({
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            custom={0}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 mb-8 md:mb-12"
-          >
-            <Circle className="h-2 w-2 fill-purple-500 text-purple-500" />
-            <span className="text-sm text-purple-600 tracking-wide font-sans font-semibold">
-              {badge}
-            </span>
-          </motion.div>
+          {badge && (
+            <motion.div
+              custom={0}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 mb-8 md:mb-12"
+            >
+              <Circle className="h-2 w-2 fill-purple-500 text-purple-500" />
+              <span className="text-sm text-purple-600 tracking-wide font-sans font-semibold">
+                {badge}
+              </span>
+            </motion.div>
+          )}
 
           <motion.div
             custom={1}
